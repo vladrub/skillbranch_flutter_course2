@@ -2,8 +2,6 @@
 
 Результат выполнения ДЗ
 
-<img src="result.gif" width="300">
-
 ## Getting Started
 
 Создание нового проекта
