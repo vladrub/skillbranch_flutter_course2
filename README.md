@@ -1,6 +1,8 @@
-# flutter_push
+# SkillBranch Flutter Push
 
-A new Flutter project.
+Результат выполнения ДЗ
+
+<img src="result.gif" width="300">
 
 ## Getting Started
 
