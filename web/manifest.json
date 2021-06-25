@@ -1,6 +1,6 @@
 {
-    "name": "flutter_push",
-    "short_name": "flutter_push",
+    "name": "flutter_fight_club",
+    "short_name": "flutter_fight_club",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
