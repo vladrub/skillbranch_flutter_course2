@@ -43,9 +43,6 @@ class MyHomePageState extends State<MyHomePage> {
   int yourLives = maxLives;
   int enemysLives = maxLives;
 
-  String youStatusText = '';
-  String enemyStatusText = '';
-
   String centerText = "";
 
   @override
@@ -123,8 +120,7 @@ class MyHomePageState extends State<MyHomePage> {
   void _onGoButtonClicked() {
     if (yourLives == 0 || enemysLives == 0) {
       setState(() {
-        youStatusText = '';
-        enemyStatusText = '';
+        centerText = '';
         yourLives = enemysLives = maxLives;
       });
     } else if (defendingBodyPart != null && attackingBodyPart != null) {
