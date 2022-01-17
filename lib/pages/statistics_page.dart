@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fight_club/fight_result.dart';
 import 'package:flutter_fight_club/resources/fight_club_colors.dart';
 import 'package:flutter_fight_club/widgets/secondary_action_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,50 +25,26 @@ class StatisticsPage extends StatelessWidget {
               ),
             ),
             Expanded(child: SizedBox()),
-            Column(
-              children: [
-                FutureBuilder<int?>(
-                  future: SharedPreferences.getInstance().then(
-                    (sharedPreferences) =>
-                        sharedPreferences.getInt("stats_won"),
-                  ),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData || snapshot.data == null) {
-                      return _statusText("Won: 0");
-                    }
+            FutureBuilder<SharedPreferences>(
+              future: SharedPreferences.getInstance(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData || snapshot.data == null) {
+                  return const SizedBox();
+                }
 
-                    return _statusText("Won: ${snapshot.data}");
-                  },
-                ),
-                SizedBox(height: 6),
-                FutureBuilder<int?>(
-                  future: SharedPreferences.getInstance().then(
-                    (sharedPreferences) =>
-                        sharedPreferences.getInt("stats_lost"),
-                  ),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData || snapshot.data == null) {
-                      return _statusText("Lost: 0");
-                    }
+                final SharedPreferences sp = snapshot.data!;
 
-                    return _statusText("Lost: ${snapshot.data}");
-                  },
-                ),
-                SizedBox(height: 6),
-                FutureBuilder<int?>(
-                  future: SharedPreferences.getInstance().then(
-                    (sharedPreferences) =>
-                        sharedPreferences.getInt("stats_draw"),
-                  ),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData || snapshot.data == null) {
-                      return _statusText("Draw: 0");
-                    }
-
-                    return _statusText("Draw: ${snapshot.data}");
-                  },
-                ),
-              ],
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _statusText("Won: ${sp.getInt('stats_won') ?? 0}"),
+                    SizedBox(height: 6),
+                    _statusText("Lost: ${sp.getInt('stats_lost') ?? 0}"),
+                    SizedBox(height: 6),
+                    _statusText("Draw: ${sp.getInt('stats_draw') ?? 0}"),
+                  ],
+                );
+              },
             ),
             Expanded(child: SizedBox()),
             Padding(

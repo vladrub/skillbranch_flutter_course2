@@ -55,6 +55,7 @@ class _MainPageContent extends StatelessWidget {
                 }
 
                 return Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       "Last fight result",
@@ -63,6 +64,7 @@ class _MainPageContent extends StatelessWidget {
                         fontSize: 14,
                       ),
                     ),
+                    SizedBox(height: 12),
                     FightResultWidget(fightResult: fightResult),
                   ],
                 );

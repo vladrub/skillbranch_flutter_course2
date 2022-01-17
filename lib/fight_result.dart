@@ -7,6 +7,8 @@ class FightResult {
   static const lost = FightResult._("Lost");
   static const draw = FightResult._("Draw");
 
+  static const values = [won, lost, draw];
+
   static FightResult? calculateResult(
       final int yourLives, final int enemysLives) {
     if (yourLives == 0 && enemysLives == 0) {
@@ -21,15 +23,8 @@ class FightResult {
   }
 
   static FightResult? fromString(final String string) {
-    if (string.toLowerCase() == "won") {
-      return won;
-    } else if (string.toLowerCase() == "draw") {
-      return draw;
-    } else if (string.toLowerCase() == "lost") {
-      return lost;
-    } else {
-      return null;
-    }
+    return values.firstWhere(
+        (value) => value.result.toLowerCase() == string.toLowerCase());
   }
 
   @override

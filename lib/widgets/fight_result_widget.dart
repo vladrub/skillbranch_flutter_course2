@@ -14,6 +14,7 @@ class FightResultWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 140,
       margin: const EdgeInsets.symmetric(
         vertical: 12,
       ),
@@ -58,7 +59,8 @@ class FightResultWidget extends StatelessWidget {
             ),
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(
-              horizontal: 20,
+              horizontal: 12,
+              vertical: 4,
             ),
             child: Text(
               fightResult.result.toLowerCase(),
