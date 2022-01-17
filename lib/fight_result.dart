@@ -20,6 +20,18 @@ class FightResult {
     }
   }
 
+  static FightResult? fromString(final String string) {
+    if (string.toLowerCase() == "won") {
+      return won;
+    } else if (string.toLowerCase() == "draw") {
+      return draw;
+    } else if (string.toLowerCase() == "lost") {
+      return lost;
+    } else {
+      return null;
+    }
+  }
+
   @override
   String toString() {
     return "FightResult{result: $result}";
